@@ -3,6 +3,20 @@
 使用方法
 
 ```
+$ ./bin/xlsx2itop -h
+Usage of xlsx2itop:
+  -c string
+        配置文件路径
+  -d int
+        指定删除几行表头 (default 1)
+  -f string
+        xlsx 文件路径
+  -s string
+        指定要读取的 Sheet (default "Sheet1")
+```
+
+例如：
+```
 xlsx2itop -c config.yaml -f CI.xlsx -s SheetName
 ```
 
@@ -15,28 +29,23 @@ model:
 - class: Server
   key: serialnumber
   fields:
-  - name: name
-    label: 名称
+  - label: 名称
     value:
       axis: A
-  - name: org_id
-    label: 组织->名称
+  - label: 组织->名称
     value:
       axis: =Demo
-  - name: status
-    label: 状态
+  - label: 状态
     value:
       axis: C
       filter:
       - replace(00=在线，01=已下线）
-  - name: rack_id
-    label: 机柜->全称
+  - label: 机柜->全称
     value:
       axis: F
       filter:
       - join(E,F)
-  - name: move2production
-    label: 投产日期
+  - label: 投产日期
     value:
       axis: G
       filter:

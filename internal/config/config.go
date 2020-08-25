@@ -17,6 +17,9 @@ var XlsxFile = flag.String("f", "", "xlsx文件路径")
 // Sheet 需要处理的sheet
 var Sheet = flag.String("s", "Sheet1", "指定要读取的Sheet")
 
+// Start 忽略开头的行数
+var Start = flag.Int("d", 1, "指定删除几行表头")
+
 // Val 属性的值
 type Val struct {
 	Axis   string   `yaml:"axis"`
@@ -25,7 +28,6 @@ type Val struct {
 
 // Field 每个类的模型
 type Field struct {
-	Name  string `yaml:"name"`
 	Label string `yaml:"label"`
 	Value Val    `yaml:"value"`
 }

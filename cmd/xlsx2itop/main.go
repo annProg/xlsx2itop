@@ -71,7 +71,7 @@ func main() {
 		log.Fatalf("Load Config Error: %v", err.Error())
 	}
 
-	Data = xlsx.GetData(*config.XlsxFile, *config.Sheet)
+	Data = xlsx.GetData(*config.XlsxFile, *config.Sheet, *config.Start)
 	//log.Printf("Excel Data: %v", Data)
 
 	for _, conf := range cfg.Items {

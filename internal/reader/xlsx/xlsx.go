@@ -26,7 +26,7 @@ func index2Axis(index int) (axis string) {
 }
 
 // GetData 将excel表格每一行转换为以 axis 为key的map
-func GetData(xlsxFile string, sheet string) (data []map[string]string) {
+func GetData(xlsxFile string, sheet string, start int) (data []map[string]string) {
 	f, err := excelize.OpenFile(xlsxFile)
 	if err != nil {
 		log.Fatalf("OpenExcel Failed: %v", err.Error())
@@ -34,7 +34,7 @@ func GetData(xlsxFile string, sheet string) (data []map[string]string) {
 
 	rows, err := f.GetRows(sheet)
 	// 删除表头
-	rows = rows[1:]
+	rows = rows[start:]
 	//fmt.Println(reflect.TypeOf(rows))
 	for _, row := range rows {
 		var item map[string]string
